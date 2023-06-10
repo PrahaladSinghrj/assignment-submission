@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login Page</title>
+		<style>
+		/* CSS for login form */
+		.container {
+		  width: 300px;
+		  margin: 0 auto;
+		  margin-top: 100px;
+		}
+		input[type="text"], input[type="password"] {
+		  width: 100%;
+		  padding: 10px;
+		  margin-bottom: 10px;
+		}
+		.error-message {
+		  color: red;
+		}
+		#signup-modal {
+		  display: none;
+		  position: fixed;
+		  left: 0;
+		  top: 0;
+		  width: 100%;
+		  height: 100%;
+		  background-color: rgba(247, 244, 255, 0.411);
+		  z-index: 9999;
+		}
+		.modal-content {
+		  width: 400px;
+		  margin: 200px auto;
+		  background-color: rgba(182, 168, 168, 0.486);
+		  padding: 20px;
+		  border-radius: 5px;
+		}
+		.modal-content input {
+		  width: 100%;
+		  padding: 10px;
+		  margin-bottom: 10px;
+		}
+		.body {
+			background-repeat: no-repeat;
+
+		}
+		
+	</style>	
+</head>
+<body bgcolor="lightblue">
+	<div class="container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button type="button" onclick="login()">Login</button>
+      <p id="error-message" class="error-message"></p>
+    </form>
+   <b> <p>Don't have an account? <a href="#" onclick="openSignUpModal()">Sign up</a></p></b>
+  </div>
+
+  <div id="signup-modal">
+    <div class="modal-content">
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <input type="text" id="signup-username" placeholder="Username">
+        <input type="text" id="signup-email" placeholder="Email">
+        <input type="password" id="signup-password" placeholder="Password">
+        <button type="button" onclick="signup()">Submit</button>
+      </form>
+      <div id="signup-details"></div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for login functionality
+    function login() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var errorMessage = document.getElementById('error-message');
+
+      if (username === '' || password === '') {
+        errorMessage.textContent = 'Username or password is Empty';
+      } else {
+        // Perform login logic here
+        errorMessage.textContent = '';
+      }
+    }
+
+    // JavaScript for sign up functionality
+    function openSignUpModal() {
+      document.getElementById('signup-modal').style.display = 'block';
+    }
+
+    function signup() {
+      var signupUsername = document.getElementById('signup-username').value;
+      var signupEmail = document.getElementById('signup-email').value;
+      var signupPassword = document.getElementById('signup-password').value;
+      var signupDetails = document.getElementById('signup-details');
+
+      if (signupUsername === '' || signupEmail === '' || signupPassword === '') {
+        signupDetails.textContent = 'Please fill in all the details.';
+      } else {
+        // Perform signup logic here
+        signupDetails.innerHTML = '<h3>Signup Details:</h3>' +
+                                  '<p>Username: ' + signupUsername + '</p>' +
+                                  '<p>Email: ' + signupEmail + '</p>' +
+                                  '<p>Password: ' + signupPassword + '</p>';
+      }
+    }
+  </script>
+</div>
+</body>
+</html>
